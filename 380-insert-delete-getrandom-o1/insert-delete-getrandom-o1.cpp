@@ -1,6 +1,7 @@
 class RandomizedSet {
 public:
     unordered_map<int,int>umap;
+    vector<int>vec;
     int size;
     RandomizedSet() {
         size=0;
@@ -8,13 +9,19 @@ public:
     
     bool insert(int val) {
         if(umap.count(val)!=0){return false;}
-        umap[val]=val;
         size++;
+        vec.push_back(val);
+        umap[val]=size-1;
         return true;
     }
     
     bool remove(int val) {
         if(umap.count(val)==0){return false;}
+        int index=umap[val];
+        int last=vec.back();
+        vec[index]=last;
+        vec.pop_back();
+        umap[last]=index;
         umap.erase(val);
         size--;
         return true;

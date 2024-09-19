@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool canConstruct(string ransomNote, string magazine) {
-        map<char,int> mag;
+        unordered_map<char,int> mag;
         for(int i=0;i<magazine.length();i++){
             if(mag[magazine[i]]){mag[magazine[i]]++;}
             else{mag[magazine[i]]=1;}
